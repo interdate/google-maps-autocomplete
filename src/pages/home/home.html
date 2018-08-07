@@ -1,0 +1,19 @@
+
+Step 2: Google Places Autocomplete
+Let’s dig deeper, and add Google Places searching and autocomplete functionalities.
+
+With the following code are going to add a search bar where user can start typing a place and we will show him with the Google search recomendations.
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place"></ion-searchbar>
+  </ion-toolbar>
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+<!--
+      {{ item.terms[0].value }}
+-->
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+</ion-header>
