@@ -33,10 +33,21 @@ export class HomePage {
                 this.zone.run(() => {
                     console.log(predictions);
                     predictions.forEach((prediction) => {
-                        this.autocompleteItems.push(prediction);
+                        console.log(prediction.terms[prediction.terms.length-1].value);
+                        if(prediction.terms[prediction.terms.length-1].value == 'USA'){
+                            this.autocompleteItems.push(prediction);
+                        }
                     });
                 });
             });
+
+
+    }
+
+    selectCity(data){
+        console.log(data.terms[0].value);
+        this.autocomplete.input = data.terms[0].value;
+        this.autocompleteItems = [];
     }
 
     ionViewDidLoad() {
